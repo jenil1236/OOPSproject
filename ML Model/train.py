@@ -4,11 +4,11 @@ from torchvision import datasets, transforms, models
 from torch.utils.data import DataLoader
 import csv
 
-metrics = []  # to store results of each epoch
+metrics = [] 
 
 # Paths
 train_dir = r"D:/OOPS Project/ayushman/datasets/07 beans/train"
-val_dir   = r"D:/OOPS Project/ayushman/datasets/07 beans/valid"  # create/adjust
+val_dir   = r"D:/OOPS Project/ayushman/datasets/07 beans/valid"
 
 # Data transforms
 transform = transforms.Compose([
