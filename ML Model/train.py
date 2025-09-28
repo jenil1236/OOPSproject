@@ -7,8 +7,8 @@ import csv
 metrics = []  # to store results of each epoch
 
 # Paths
-train_dir = r"D:/padhai/oops  Project/ayushman/datasets/07 beans/train"
-val_dir   = r"D:/padhai/oops  Project/ayushman/datasets/07 beans/valid"  # create/adjust
+train_dir = r"D:/OOPS Project/ayushman/datasets/07 beans/train"
+val_dir   = r"D:/OOPS Project/ayushman/datasets/07 beans/valid"  # create/adjust
 
 # Data transforms
 transform = transforms.Compose([
