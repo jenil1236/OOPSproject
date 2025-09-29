@@ -1,0 +1,174 @@
+/* =========================
+   Global Styles
+   ========================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f4;
+  color: #5c4033; /* brown font color */
+  margin: 10px;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #14532d; /* dark green headings */
+  font-weight: 600;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+.custom-navbar {
+  background-color: #14532d !important;
+}
+
+.custom-navbar .navbar-brand-custom,
+.custom-navbar .nav-link {
+  color: #f4f7f4 !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #a3e635 !important; /* light green hover */
+}
+
+/* =========================
+   Titles & Subtitles
+   ========================= */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #14532d;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #5c4033;
+}
+
+/* =========================
+   Sections
+   ========================= */
+.how-we-do-it,
+.credits {
+  padding: 3rem 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.how-we-do-it h2,
+.credits h2 {
+  color: #14532d;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================
+   Gallery Cards
+   ========================= */
+.credits .card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.credits .card img {
+  object-fit: cover;
+  height: 200px;
+}
+
+.credits .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(20, 83, 45, 0.3);
+}
+
+.credits .card-title {
+  color: #14532d;
+  font-weight: 600;
+}
+
+.credits .card-text {
+  color: #5c4033;
+}
+
+/* =========================
+   Buttons (Optional Overrides)
+   ========================= */
+.btn-primary {
+  background-color: #14532d;
+  border-color: #14532d;
+}
+
+.btn-primary:hover {
+  background-color: #0f3f22;
+  border-color: #0f3f22;
+}
+
+.btn-secondary {
+  background-color: #a3e635;
+  border-color: #a3e635;
+  color: #14532d;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background-color: #89cc28;
+  border-color: #89cc28;
+  color: #fff;
+}
+
+/* =========================
+   Navbar Styling
+   ========================= */
+.custom-navbar {
+  background-color: #14532d !important;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Brand */
+.navbar-brand-custom {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a3e635 !important; /* light green brand */
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand-custom:hover {
+  transform: scale(1.05);
+}
+
+/* Nav Links */
+.nav-links-custom .nav-link {
+  color: #f4f7f4 !important;
+  margin-left: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links-custom .nav-link:hover {
+  color: #a3e635 !important; /* light green hover */
+}
+
+/* Underline Hover Effect */
+.nav-links-custom .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #a3e635;
+  transition: width 0.3s ease;
+}
+
+.nav-links-custom .nav-link:hover::after {
+  width: 100%;
+}
