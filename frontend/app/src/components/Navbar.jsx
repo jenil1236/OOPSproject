@@ -15,7 +15,7 @@ function Navbar({ user, onLogout }) {
           <a href="#upload" className="nav-link">Upload</a>
           <a href="#blog" className="nav-link">Blog</a>
           <a href="#market" className="nav-link">Marketplace</a>
-          <a href="#announcements" className="nav-link">Announcements</a>
+          <Link to="/announcements" className="nav-link">Announcements</Link>
           
           <div className="auth-section">
             {user ? (

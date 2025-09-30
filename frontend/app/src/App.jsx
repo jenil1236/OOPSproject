@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
+import Announcements from './pages/Announcements';
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
+          <Route path="/announcements" element={<Announcements user={user} />} />
         </Routes>
       </div>
     </Router>
