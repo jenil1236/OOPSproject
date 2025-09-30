@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Form, Modal } from 'react-bootstrap';
-
+import './Announcements.css';
 const Announcements = () => {
     // Sample announcements data
     const initialAnnouncements = [
@@ -101,131 +101,151 @@ const Announcements = () => {
     };
 
     return (
-        <Container className="mt-4 mb-4">
-            <h1 className="mb-4">Announcements</h1>
-            
-            {/* Admin form to add/edit announcements */}
-            <Card className="mb-4">
-                <Card.Body>
-                    <h5 className="mb-3">
-                        {isEditing ? 'Edit Announcement' : 'Create New Announcement'}
-                    </h5>
-                    <Form onSubmit={handleSubmit}>
-                        <Row>
-                            <Col md={6}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Title *</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="title"
-                                        value={currentAnnouncement.title}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Author *</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="author"
-                                        value={currentAnnouncement.author}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Content *</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                rows={4}
-                                name="content"
-                                value={currentAnnouncement.content}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Button type="submit" variant="primary" className="me-2">
-                            {isEditing ? '✏️ Update Announcement' : '➕ Post Announcement'}
-                        </Button>
-                        {isEditing && (
-                            <Button
-                                variant="outline-secondary"
-                                onClick={() => {
-                                    setIsEditing(false);
-                                    setCurrentAnnouncement({
-                                        id: null,
-                                        title: '',
-                                        content: '',
-                                        date: '',
-                                        author: ''
-                                    });
-                                }}
-                            >
+        <div className="announcements-container">
+            <Container>
+                <div className="announcements-header">
+                    <h1 className="announcements-title">📢 Announcements</h1>
+                    <p className="announcements-subtitle">Stay updated with the latest news and updates</p>
+                </div>
+                
+                {/* Admin form to add/edit announcements */}
+                <Card className="announcement-form-card">
+                    <div className="form-card-header">
+                        <h5 className="form-card-title">
+                            {isEditing ? '✏️ Edit Announcement' : '➕ Create New Announcement'}
+                        </h5>
+                    </div>
+                    <Card.Body className="announcement-form">
+                        <Form onSubmit={handleSubmit}>
+                            <Row>
+                                <Col md={6}>
+                                    <div className="form-group-custom">
+                                        <label className="form-label-custom">Title *</label>
+                                        <Form.Control
+                                            type="text"
+                                            name="title"
+                                            value={currentAnnouncement.title}
+                                            onChange={handleInputChange}
+                                            required
+                                            className="form-control-custom"
+                                        />
+                                    </div>
+                                </Col>
+                                <Col md={6}>
+                                    <div className="form-group-custom">
+                                        <label className="form-label-custom">Author *</label>
+                                        <Form.Control
+                                            type="text"
+                                            name="author"
+                                            value={currentAnnouncement.author}
+                                            onChange={handleInputChange}
+                                            required
+                                            className="form-control-custom"
+                                        />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <div className="form-group-custom">
+                                <label className="form-label-custom">Content *</label>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={4}
+                                    name="content"
+                                    value={currentAnnouncement.content}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="form-control-custom form-textarea-custom"
+                                />
+                            </div>
+                            <Button type="submit" className="btn-primary-custom me-2">
+                                {isEditing ? '✏️ Update Announcement' : '➕ Post Announcement'}
+                            </Button>
+                            {isEditing && (
+                                <Button
+                                    type="button"
+                                    className="btn-secondary-custom"
+                                    onClick={() => {
+                                        setIsEditing(false);
+                                        setCurrentAnnouncement({
+                                            id: null,
+                                            title: '',
+                                            content: '',
+                                            date: '',
+                                            author: ''
+                                        });
+                                    }}
+                                >
+                                    Cancel
+                                </Button>
+                            )}
+                        </Form>
+                    </Card.Body>
+                </Card>
+
+                {/* List of announcements */}
+                <h5 className="announcements-section-header">All Announcements</h5>
+                
+                {announcements.length > 0 ? (
+                    announcements.map((announcement) => (
+                        <Card key={announcement.id} className="announcement-card">
+                            <Card.Body className="announcement-card-body">
+                                <h6 className="announcement-card-title">{announcement.title}</h6>
+                                <div className="announcement-card-meta">
+                                    <span className="announcement-date">
+                                        📅 Posted on {announcement.date}
+                                    </span>
+                                    <span className="announcement-author">
+                                        👤 by {announcement.author}
+                                    </span>
+                                </div>
+                                <p className="announcement-card-content">
+                                    {announcement.content}
+                                </p>
+                                <div className="announcement-actions">
+                                    <Button
+                                        className="btn-action btn-edit"
+                                        onClick={() => handleEdit(announcement)}
+                                    >
+                                        ✏️ Edit
+                                    </Button>
+                                    <Button
+                                        className="btn-action btn-delete"
+                                        onClick={() => handleOpenDeleteDialog(announcement.id)}
+                                    >
+                                        🗑️ Delete
+                                    </Button>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    ))
+                ) : (
+                    <div className="empty-state">
+                        <div className="empty-state-icon">📭</div>
+                        <p className="empty-state-text">No announcements available.</p>
+                    </div>
+                )}
+
+                {/* Confirmation Modal for Delete */}
+                <Modal show={openDialog} onHide={handleCloseDialog}>
+                    <div className="modal-content-custom">
+                        <Modal.Header closeButton className="modal-header-custom">
+                            <Modal.Title className="modal-title-custom">⚠️ Confirm Deletion</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="modal-body-custom">
+                            Are you sure you want to delete this announcement? This action cannot be undone.
+                        </Modal.Body>
+                        <Modal.Footer className="modal-footer-custom">
+                            <Button onClick={handleCloseDialog} className="btn-modal-cancel">
                                 Cancel
                             </Button>
-                        )}
-                    </Form>
-                </Card.Body>
-            </Card>
-
-            {/* List of announcements */}
-            <h5 className="mb-3">All Announcements</h5>
-            
-            {announcements.length > 0 ? (
-                announcements.map((announcement) => (
-                    <Card key={announcement.id} className="mb-3">
-                        <Card.Body>
-                            <Card.Title>{announcement.title}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">
-                                Posted on {announcement.date} by {announcement.author}
-                            </Card.Subtitle>
-                            <Card.Text>
-                                {announcement.content}
-                            </Card.Text>
-                            <Button
-                                variant="outline-primary"
-                                size="sm"
-                                className="me-2"
-                                onClick={() => handleEdit(announcement)}
-                            >
-                                ✏️ Edit
+                            <Button onClick={handleDelete} className="btn-modal-danger">
+                                Delete
                             </Button>
-                            <Button
-                                variant="outline-danger"
-                                size="sm"
-                                onClick={() => handleOpenDeleteDialog(announcement.id)}
-                            >
-                                🗑️ Delete
-                            </Button>
-                        </Card.Body>
-                    </Card>
-                ))
-            ) : (
-                <p>No announcements available.</p>
-            )}
-
-            {/* Confirmation Modal for Delete */}
-            <Modal show={openDialog} onHide={handleCloseDialog}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Confirm Deletion</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Are you sure you want to delete this announcement? This action cannot be undone.
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseDialog}>
-                        Cancel
-                    </Button>
-                    <Button variant="danger" onClick={handleDelete}>
-                        Delete
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </Container>
+                        </Modal.Footer>
+                    </div>
+                </Modal>
+            </Container>
+        </div>
     );
 };
 
